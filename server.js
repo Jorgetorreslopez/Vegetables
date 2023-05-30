@@ -47,7 +47,7 @@ app.delete('/vegetables/:id', async (req, res) => {
     try {
         await Vegetable.findOneAndDelete({'_id': req.params.id})
         .then(() => {
-            res.redirect('/fruits')
+            res.redirect('/vegetables')
         })
     } catch (error) {
         res.status(400).send({ message: error.message })
@@ -57,8 +57,8 @@ app.delete('/vegetables/:id', async (req, res) => {
 // Update
 app.put('/vegetables/:id', async (req, res) =>{
     try {
-        await Vegetable.findOneAndUpdate({ '_id': req.params.id }),
-            req.body, { new: true}
+        await Vegetable.findOneAndUpdate({ '_id': req.params.id },
+            req.body, { new: true})
             .then(() => {
                 res.redirect(`/vegetables/${req.params.id}`)
             })
@@ -84,7 +84,7 @@ app.post('/vegetables', async (req, res) => {
 
 app.get('/vegetables/:id/edit', async (req, res) => {
     try {
-        const foundVegetable = await Vegetable.findOne({'_id': req.params.id})
+        const foundVegetable = await Vegetable.findOne({_id: req.params.id})
         res.render('vegetables/Edit', {
            vegetable: foundVegetable 
         })

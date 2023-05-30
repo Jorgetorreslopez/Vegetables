@@ -7,7 +7,7 @@ function Edit (props) {
             <h1> {name} Edit Paguh !!</h1>
             <form action={`/vegetables/${_id}?_method=PUT`} method='POST'>
                 Name: <input type='text' name='name' defaultValue={name}/><br/>
-                <input type='submit' value="Create Vegetable" /><br/>
+                <input type='submit' value="Update Vegetable" /><br/>
             </form>
         </div>
     )
